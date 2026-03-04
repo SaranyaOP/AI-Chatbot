@@ -1,16 +1,110 @@
-# React + Vite
+# Saranya's AI Assistant Chatbot 🤖
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An intelligent AI-powered chatbot built with React and Vite that showcases Saranya's professional portfolio through conversations powered by Google's Gemini API.
 
-Currently, two official plugins are available:
+## 📋 Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is an interactive AI chatbot that introduces Saranya's background, experience, skills, and projects. Users can ask questions and get intelligent responses about Saranya's professional journey.
 
-## React Compiler
+## 🌟 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **AI-Powered Conversations** - Uses Google Gemini API for intelligent responses
+- **Professional Portfolio Showcase** - Displays background, skills, and projects
+- **Interactive Chat Interface** - Modern UI with smooth animations
+- **Responsive Design** - Works on desktop, tablet, and mobile devices
+- **Real-time Chat History** - Maintains conversation context
+- **Easy Toggle** - Click button to open/close chatbot window
 
-## Expanding the ESLint configuration
+## 🛠️ Technology Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Technology | Purpose |
+|-----------|---------|
+| **React** | UI framework |
+| **Vite** | Build tool & dev server |
+| **Google Gemini API** | AI responses generation |
+| **CSS3** | Styling & animations |
+| **JavaScript (ES6+)** | Application logic |
+
+## ⚙️ API Configuration
+
+1. **Get API Key:**
+   - Visit [Google AI Studio](https://aistudio.google.com)
+   - Create a new API key
+
+2. **Configure Environment:**
+   Create `.env` file in root directory:
+   ```env
+   VITE_API_URL=https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent
+   VITE_API_KEY=your_google_gemini_api_key_here
+   ```
+
+3. **API Request Format:**
+   ```javascript
+   const response = await fetch(VITE_API_URL, {
+     method: 'POST',
+     headers: {
+       'x-goog-api-key': VITE_API_KEY,
+       'Content-Type': 'application/json'
+     },
+     body: JSON.stringify({ contents: chatHistory })
+   });
+   ```
+
+## 🚀 Quick Start
+
+```bash
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+App runs at `http://localhost:5173`
+
+## 💬 Usage Examples
+
+Click the chatbot icon to ask questions like:
+
+- *"Tell me about Saranya's background"*
+- *"What are her main skills?"*
+- *"What projects has she worked on?"*
+- *"What technologies does Saranya specialize in?"*
+- *"How can I contact Saranya?"*
+
+## 📂 Project Structure
+
+```
+src/
+├── components/
+│   ├── ChatbotIcon.jsx      # Chatbot icon
+│   ├── ChatForm.jsx         # Message input form
+│   └── ChatMessage.jsx      # Message display
+├── App.jsx                  # Main component
+├── personalInfo.js          # Profile data
+├── index.css               # Global styles
+└── main.jsx                # Entry point
+```
+
+## 🎨 Customization
+
+**Update Profile:** Edit `src/personalInfo.js` with:
+- Professional summary
+- Skills & expertise
+- Projects & achievements
+- Contact information
+
+**Styling:** Modify `src/index.css` and `src/App.css`
+- Primary color: `#6d4fc2`
+- Gradients and animations
+
+## 📧 Contact
+
+For questions or collaboration, reach out through the chatbot or contact information provided in the profile.
+
+---
+
+**Built with ❤️ using React, Vite, and Google Gemini AI**
