@@ -1,15 +1,16 @@
 # Saranya's AI Assistant Chatbot 🤖
 
-An intelligent AI-powered chatbot built with React and Vite that showcases Saranya's professional portfolio through conversations powered by Google's Gemini API.
+An intelligent AI-powered chatbot built with React and Vite that showcases Saranya's professional portfolio through conversations securely powered by Google's Gemini API and Vercel Serverless Functions.
 
 ## 📋 Project Overview
 
 This is an interactive AI chatbot that introduces Saranya's background, experience, skills, and projects. Users can ask questions and get intelligent responses about Saranya's professional journey.
-demo: https://ai-chatbot-2e109.web.app/
+**Demo:** [Add your Vercel URL here, e.g., https://your-project.vercel.app]
 
 ## 🌟 Features
 
 - **AI-Powered Conversations** - Uses Google Gemini API for intelligent responses
+- **Secure Backend** - API keys are protected using Vercel Serverless API routes
 - **Professional Portfolio Showcase** - Displays background, skills, and projects
 - **Interactive Chat Interface** - Modern UI with smooth animations
 - **Responsive Design** - Works on desktop, tablet, and mobile devices
@@ -23,37 +24,96 @@ demo: https://ai-chatbot-2e109.web.app/
 | **React** | UI framework |
 | **Vite** | Build tool & dev server |
 | **Google Gemini API** | AI responses generation |
+| **Vercel Serverless** | Secure backend API routing |
 | **CSS3** | Styling & animations |
 | **JavaScript (ES6+)** | Application logic |
 
 ## ⚙️ API Configuration
 
+To keep the API key secure, this project uses a backend proxy route. The key is never exposed to the browser.
+
 1. **Get API Key:**
    - Visit [Google AI Studio](https://aistudio.google.com)
    - Create a new API key
 
-2. **Configure Environment:**
-   Create `.env` file in root directory:
+2. **Configure Local Environment:**
+   Create a `.env` file in the root directory (do not commit this file):
    ```env
-   VITE_API_URL=https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent
-   VITE_API_KEY=your_google_gemini_api_key_here
-   ```
+   GEMINI_API_KEY=your_google_gemini_api_key_here
 
-3. **API Request Format:**
-   ```javascript
-   const response = await fetch(VITE_API_URL, {
-     method: 'POST',
-     headers: {
-       'x-goog-api-key': VITE_API_KEY,
-       'Content-Type': 'application/json'
-     },
-     body: JSON.stringify({ contents: chatHistory })
-   });
-   ```
+3.API Request Flow:
+The React frontend sends a request to the local Vercel Serverless route, which securely attaches the API key and forwards it to Google:
+// In App.jsx
+const response = await fetch("/api/gemini", {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ contents: chatHistory })
+});
 
-## 🚀 Quick Start
+Gemini said
+I wish I could directly send you a downloadable file, but as an AI, I don't have a way to trigger a file download directly in our chat window.
 
-```bash
+The easiest way to get this updated content into your project is to click the Copy button in the top right corner of the code block below. Then, simply open your README.md file in VS Code, highlight everything currently in there, and paste this new version right over it.
+
+Markdown
+# Saranya's AI Assistant Chatbot 🤖
+
+An intelligent AI-powered chatbot built with React and Vite that showcases Saranya's professional portfolio through conversations securely powered by Google's Gemini API and Vercel Serverless Functions.
+
+## 📋 Project Overview
+
+This is an interactive AI chatbot that introduces Saranya's background, experience, skills, and projects. Users can ask questions and get intelligent responses about Saranya's professional journey.
+**Demo:** [Add your Vercel URL here, e.g., https://your-project.vercel.app]
+
+## 🌟 Features
+
+- **AI-Powered Conversations** - Uses Google Gemini API for intelligent responses
+- **Secure Backend** - API keys are protected using Vercel Serverless API routes
+- **Professional Portfolio Showcase** - Displays background, skills, and projects
+- **Interactive Chat Interface** - Modern UI with smooth animations
+- **Responsive Design** - Works on desktop, tablet, and mobile devices
+- **Real-time Chat History** - Maintains conversation context
+- **Easy Toggle** - Click button to open/close chatbot window
+
+## 🛠️ Technology Stack
+
+| Technology | Purpose |
+|-----------|---------|
+| **React** | UI framework |
+| **Vite** | Build tool & dev server |
+| **Google Gemini API** | AI responses generation |
+| **Vercel Serverless** | Secure backend API routing |
+| **CSS3** | Styling & animations |
+| **JavaScript (ES6+)** | Application logic |
+
+## ⚙️ API Configuration
+
+To keep the API key secure, this project uses a backend proxy route. The key is never exposed to the browser.
+
+1. **Get API Key:**
+   - Visit [Google AI Studio](https://aistudio.google.com)
+   - Create a new API key
+
+2. **Configure Local Environment:**
+   Create a `.env` file in the root directory (do not commit this file):
+   ```env
+   GEMINI_API_KEY=your_google_gemini_api_key_here
+API Request Flow:
+The React frontend sends a request to the local Vercel Serverless route, which securely attaches the API key and forwards it to Google:
+
+JavaScript
+// In App.jsx
+const response = await fetch("/api/gemini", {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ contents: chatHistory })
+});
+
+🚀 Quick Start
 # Install dependencies
 npm install
 
@@ -62,108 +122,81 @@ npm run dev
 
 # Build for production
 npm run build
-```
 
-App runs at `http://localhost:5173`
+App runs at http://localhost:5173
 
-## 💬 Usage Examples
-
+💬 Usage Examples
 Click the chatbot icon to ask questions like:
 
-- *"Tell me about Saranya's background"*
-- *"What are her main skills?"*
-- *"What projects has she worked on?"*
-- *"What technologies does Saranya specialize in?"*
-- *"How can I contact Saranya?"*
+"Tell me about Saranya's background"
 
-## 📂 Project Structure
+"What are her main skills?"
 
-```
-src/
-├── components/
-│   ├── ChatbotIcon.jsx      # Chatbot icon
-│   ├── ChatForm.jsx         # Message input form
-│   └── ChatMessage.jsx      # Message display
-├── App.jsx                  # Main component
-├── personalInfo.js          # Profile data
-├── index.css               # Global styles
-└── main.jsx                # Entry point
-```
+"What projects has she worked on?"
 
-## 📦 Deployment & CI/CD with Firebase
+"What technologies does Saranya specialize in?"
 
-Follow these steps to host the chatbot on Firebase Hosting and configure automated delivery using GitHub Actions.
+"How can I contact Saranya?"
 
-### 🔧 Firebase Setup
+📂 Project Structure
+/
+├── api/
+│   └── gemini.js            # Secure serverless backend route
+├── src/
+│   ├── components/
+│   │   ├── ChatbotIcon.jsx  # Chatbot icon
+│   │   ├── ChatForm.jsx     # Message input form
+│   │   └── ChatMessage.jsx  # Message display
+│   ├── App.jsx              # Main component
+│   ├── personalInfo.js      # Profile data & system instructions
+│   ├── index.css            # Global styles
+│   └── main.jsx             # Entry point
 
-1. **Install Firebase CLI** globally if you haven’t already:
-   ```bash
-   npm install -g firebase-tools
-   ```
-2. **Log in** to Firebase from the terminal:
-   ```bash
-   firebase login
-   ```
-3. **Create a Firebase project** via the console or run:
-   ```bash
-   firebase projects:create your‑project‑id
-   ```
-4. **Initialize hosting** inside this repository:
-   ```bash
-   firebase init hosting
-   ```
-   - Select the project you created.
-   - Set the public directory to `dist` (Vite’s output).
-   - Configure as a single‑page app (rewrite all urls to `/index.html`).
-   - Say **no** when asked to overwrite `index.html`.
+📦 Deployment & CI/CD with Vercel
+This project is configured for seamless deployment and automatic CI/CD using Vercel.
 
-   This generates `firebase.json` and `.firebaserc` (commit them to Git).  Replace
-   `YOUR_FIREBASE_PROJECT_ID` in `.firebaserc` with your real project ID.
+🚀 Deploying to Vercel
+Push your code to GitHub: Ensure your api folder and frontend changes are pushed to your main branch.
 
-### 🚀 Manual Deploy
+Import to Vercel:
 
-Build the production bundle and push to Firebase:
+Log into Vercel with your GitHub account.
 
-```bash
-npm run build
-firebase deploy --only hosting
-```
+Click Add New... -> Project.
 
-### 🤖 Automated GitHub Actions
+Import this GitHub repository.
 
-A workflow at `.github/workflows/firebase-hosting.yml` is included and will run on
-pushes to the `main` branch. It performs a fresh install, builds the app, and then
-deploys using the Firebase CLI.
+Configure Environment Variables:
 
-1. **Generate a CI token** locally:
-   ```bash
-   firebase login:ci
-   ```
-   Copy the output string.
-2. **Add repository secret** named `FIREBASE_TOKEN` (Settings → Secrets → Actions)
-   with that token value.
-3. Push your changes to `main` and confirm the workflow executes successfully.
+In the Vercel project setup screen, open the "Environment Variables" section.
 
-Once configured, every merge to `main` will trigger a build + deploy automatically.
+Add your Gemini API key:
 
----
+Key: GEMINI_API_KEY
 
-## 🎨 Customization
+Value: your_actual_api_key_here
 
-**Update Profile:** Edit `src/personalInfo.js` with:
-- Professional summary
-- Skills & expertise
-- Projects & achievements
-- Contact information
+Deploy: Click the Deploy button. Vercel will automatically build the Vite app and set up the /api serverless functions.
 
-**Styling:** Modify `src/index.css` and `src/App.css`
-- Primary color: `#6d4fc2`
-- Gradients and animations
+🤖 Automated CI/CD
+Vercel handles CI/CD automatically. Every time you push changes to the main branch on GitHub, Vercel will trigger a new build and update your live website. No extra configuration or GitHub Actions are required.
 
-## 📧 Contact
+🎨 Customization
+Update Profile: Edit src/personalInfo.js with:
 
+Professional summary
+
+Skills & expertise
+
+Projects & achievements
+
+Contact information
+
+Styling: Modify src/index.css and src/App.css
+
+Primary color: #6d4fc2
+
+Gradients and animations
+
+📧 Contact
 For questions or collaboration, reach out through the chatbot or contact information provided in the profile.
-
----
-
-**Built with ❤️ using React, Vite, and Google Gemini AI**
