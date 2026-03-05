@@ -6,7 +6,7 @@ An intelligent AI-powered chatbot built with React and Vite that showcases Saran
 ## 📋 Project Overview
 
 This is an interactive AI chatbot that introduces Saranya's background, experience, skills, and projects. Users can ask questions and get intelligent responses about Saranya's professional journey.
-**Demo:** [Add your Vercel URL here, e.g., https://your-project.vercel.app]
+**Demo:** https://ai-chatbot-lemon-xi.vercel.app/
 
 ## 🌟 Features
 
