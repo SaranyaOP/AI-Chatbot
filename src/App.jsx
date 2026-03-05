@@ -60,7 +60,7 @@ function App() {
     <>
       <div className="main-container">
         <div className="welcome-content">
-          <h1 className="welcome-title">Hey,Meet </h1>
+          <h1 className="welcome-title">Hey!,Meet </h1>
           <h1 className="welcome-title-2"> Saranya's AI Assistant</h1>
           <p className="welcome-description">
             I'm Saranya's AI assistant, here to share insights about her
