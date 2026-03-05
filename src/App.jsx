@@ -30,7 +30,7 @@ function App() {
     try {
       // Make the API request to generate bot response
       const response = await fetch(
-        "/api/gemini",
+         import.meta.env.VITE_API_URL,
         requestOprtions,
       );
       const data = await response.json();
